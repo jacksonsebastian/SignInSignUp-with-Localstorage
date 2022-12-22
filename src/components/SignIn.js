@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
-const Login = () => {
+const SignIn = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
-  const handleLogin = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
-    const loggeduser = JSON.parse(localStorage.getItem("user"));
+    const signeduser = JSON.parse(localStorage.getItem("user"));
     if (
-      input.email === loggeduser.email &&
-      input.password === loggeduser.password
+      input.email === signeduser.email &&
+      input.password === signeduser.password
     ) {
-      localStorage.setItem("loggedIn", true);
+      localStorage.setItem("signedIn", true);
       navigate("/");
     } else {
       alert("Please enter valid Input");
@@ -23,9 +23,9 @@ const Login = () => {
   };
   return (
     <div>
-      <div class="container">
-        <form onSubmit={handleLogin}>
-          <h1>LOGIN</h1>
+      <div className="container">
+        <form onSubmit={handleSignIn}>
+          <h1>SignIn</h1>
           <div>
             <label>Email</label>
             <input
@@ -59,7 +59,7 @@ const Login = () => {
           <button>Sign In</button>
           <div>
             <p>
-              Don't have an Account? <Link className="link" to="/register">SignUp</Link>{" "}
+              Don't have an Account? <Link className="link" to="/SignUp"><strong>SignUp</strong></Link>
             </p>
           </div>
         </form>
@@ -68,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

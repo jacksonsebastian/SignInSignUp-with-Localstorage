@@ -4,8 +4,8 @@ const userProfile = JSON.parse(localStorage.getItem('user'));
 const Home = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem('loggedIn')
-    navigate('/login');
+    localStorage.removeItem('signedIn')
+    navigate('/SignIn');
   }
   return (
     <div className='container'>

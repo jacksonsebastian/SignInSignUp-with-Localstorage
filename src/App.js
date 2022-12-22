@@ -1,8 +1,9 @@
 import React from "react";
 import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import Register from "./pages/Register";
 import Protected from "./Services/Protected";
 
 const App = () => {
@@ -10,8 +11,9 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Register" element={<Register />} />
           {/* Protected Routes */}
           <Route path="/" element={<Protected />}>
             <Route path="/" element={<Home />} />

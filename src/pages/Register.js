@@ -1,17 +1,15 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import { useNavigate } from "react-router-dom";
+import "../components/style.css";
 
+const userProfile = JSON.parse(localStorage.getItem('user'));
 const Register = () => {
   const form = useRef();
 
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
-    username: "",
-    email: "",
-    password: "",
     date: "",
     tel: "",
     address: "",
@@ -39,63 +37,16 @@ const Register = () => {
 
     // Email JS end
 
-    localStorage.setItem("user", JSON.stringify(input));
-    navigate("/login");
+    localStorage.setItem("form", JSON.stringify(input));
+    navigate("/");
   };
 
   return (
     <div>
-      <div class="container">
+      <div className="container">
         <form ref={form} onSubmit={handleSubmit}>
-          <h1>SignUp</h1>
-          <div>
-            <label>Username</label>
-            <input
-              name="username"
-              value={input.username}
-              onChange={(e) =>
-                setInput({
-                  ...input,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              type="text"
-              placeholder="Enter your Username"
-              required
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              name="email"
-              value={input.email}
-              onChange={(e) =>
-                setInput({
-                  ...input,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              type="email"
-              placeholder="Enter your Email"
-              required
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              name="password"
-              value={input.password}
-              onChange={(e) =>
-                setInput({
-                  ...input,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              type="password"
-              placeholder="*******"
-              required
-            />
-          </div>
+          <h1>Welcome {userProfile.username}</h1>
+          <p>PLEASE FILL THE FORM</p>
           <div>
             <label>Attach Profile</label>
             <input
@@ -162,13 +113,7 @@ const Register = () => {
               required
             />
           </div>
-          <button>Sign Up</button>
-
-          <div>
-            <p>
-              Already have an Account? <Link to="/login">SignIn</Link>{" "}
-            </p>
-          </div>
+          <button>Register</button>
         </form>
       </div>
     </div>
